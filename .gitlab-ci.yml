@@ -15,11 +15,21 @@ stages:
   - deploy  
   
   
-#test:
-#  stage: test
-#  #Run unit tests 
+test:
+  stage: test
   
+  variables:
+    ArtifactPath: 'src\Test\'
+    ArtifactName: 'DelphiCITests'
+    
+  script:
+  - echo building test project...
+  - C:\Windows\Microsoft.NET\Framework64\v3.5\msbuild.exe /m /nologo $env:ArtifactPath$env:ArtifactName.dproj /target:Build /p:DCC_BuildAllUnits=true /p:"Config=Release" /p:"Platform=Win32"
+  - Invoke-Item .\$env:ArtifactPath$env:ArtifactName.exe
   
+
+  
+
 build:
   stage: build
 
@@ -28,7 +38,7 @@ build:
     ArtifactName: 'DelphiCI'
 
   script:
-  - echo building...
+  - echo building project...
   - C:\Windows\Microsoft.NET\Framework64\v3.5\msbuild.exe /m /nologo $env:ArtifactPath$env:ArtifactName.dproj /target:Build /p:DCC_BuildAllUnits=true /p:"Config=Release" /p:"Platform=Win32"
   
   artifacts:
@@ -41,4 +51,4 @@ build:
 
 #deploy:
 #  stage: deploy
-#  #Run Deploy
+#  #Run deploy
