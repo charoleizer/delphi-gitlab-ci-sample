@@ -1,3 +1,4 @@
+#update-test
 before_script:
   - $env:BDS="C:\Program Files (x86)\Embarcadero\Studio\17.0"
   - $env:BDSINCLUDE="C:\Program Files (x86)\Embarcadero\Studio\17.0\Include"
@@ -17,7 +18,7 @@ stages:
   
 #test:
 #  stage: test
-#  #Run unit tests
+#  #Run unit tests 
   
   
 build:
