@@ -25,7 +25,8 @@ test:
   script:
   - echo building test project...
   - C:\Windows\Microsoft.NET\Framework64\v3.5\msbuild.exe /m /nologo $env:ArtifactPath$env:ArtifactName.dproj /target:Build /p:DCC_BuildAllUnits=true /p:"Config=Release" /p:"Platform=Win32"
-  - Invoke-Item .\$env:ArtifactPath$env:ArtifactName.exe
+  #- Invoke-Item .\$env:ArtifactPath$env:ArtifactName.exe
+  - .\src\Test\DelphiCITests.exe
   
 
   
