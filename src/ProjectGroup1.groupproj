@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2017E574-4367-4D93-951C-6AF1B11694E2}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DelphiCI.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\DelphiCITests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DelphiCI">
+        <MSBuild Projects="DelphiCI.dproj"/>
+    </Target>
+    <Target Name="DelphiCI:Clean">
+        <MSBuild Projects="DelphiCI.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiCI:Make">
+        <MSBuild Projects="DelphiCI.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DelphiCITests">
+        <MSBuild Projects="Test\DelphiCITests.dproj"/>
+    </Target>
+    <Target Name="DelphiCITests:Clean">
+        <MSBuild Projects="Test\DelphiCITests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiCITests:Make">
+        <MSBuild Projects="Test\DelphiCITests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DelphiCI;DelphiCITests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DelphiCI:Clean;DelphiCITests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DelphiCI:Make;DelphiCITests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

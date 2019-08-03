@@ -1,0 +1,44 @@
+before_script:
+  - $env:BDS="C:\Program Files (x86)\Embarcadero\Studio\17.0"
+  - $env:BDSINCLUDE="C:\Program Files (x86)\Embarcadero\Studio\17.0\Include"
+  - $env:BDSCOMMONDIR="C:\Users\Public\Documents\Embarcadero\Studio"
+  - $env:FrameworkDir="C:\Windows\Microsoft.NET\Framework\v3.5"
+  - $env:FrameworkVersion=""
+  - $env:PATH=$env:FrameworkDir;"$env:BDS\bin";$env:PATH
+  - $env:LANGDIR="EN"
+  - $env:PLATFORM=""
+  - $env:PlatformSDK=""
+  
+stages:
+  - test    
+  - build
+  - deploy  
+  
+  
+#test:
+#  stage: test
+#  #Run unit tests
+  
+  
+build:
+  stage: build
+
+  variables:
+    ArtifactPath: 'src\'
+    ArtifactName: 'DelphiCI'
+
+  script:
+  - echo building...
+  - C:\Windows\Microsoft.NET\Framework64\v3.5\msbuild.exe /m /nologo $env:ArtifactPath$env:ArtifactName.dproj /target:Build /p:DCC_BuildAllUnits=true /p:"Config=Release" /p:"Platform=Win32"
+  
+  artifacts:
+    name: "$env:CI_PROJECT_NAME-$env:CI_JOB_ID"
+    paths:
+      - bin\\"$env:ArtifactName".exe   
+    when: always
+    expire_in: 2 week
+
+
+#deploy:
+#  stage: deploy
+#  #Run deploy
