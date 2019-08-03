@@ -3,6 +3,6 @@
 [![GitlabCI](https://gitlab.com/charoleizer/delphi-gitlab-ci-sample/badges/master/pipeline.svg?style=svg)](https://gitlab.com/charoleizer/delphi-gitlab-ci-sample/pipelines)
 
 
-# Gitlab-CI on Docker-Windows for Delphi Projects.
+# Gitlab-CI on Docker-Windows for Delphi Projects
 
 Pipelines: https://gitlab.com/charoleizer/delphi-gitlab-ci-sample/pipelines
