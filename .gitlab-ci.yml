@@ -10,7 +10,8 @@ before_script:
   - $env:PlatformSDK=""
   
 stages:
-  - test    
+  - test  
+  - analyze
   - build
   - deploy  
   
@@ -30,7 +31,16 @@ test:
   - .\src\Test\DelphiCITests.exe
   # Coverage report > dunitx-results.xml
   
-
+  
+analyze:
+  stage: analyze
+  
+  variables:
+    SonarScanner: 'C:\Docker\sonar-scanner-3.2\bin\sonar-scanner.bat'
+    
+  script:
+  - echo analizing code...
+  - C:\Docker\sonar-scanner-3.2\bin\sonar-scanner.bat  
   
 
 build:
