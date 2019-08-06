@@ -39,7 +39,7 @@ analyze:
     SonarScanner: 'C:\Docker\sonar-scanner-3.2\bin\sonar-scanner.bat'
     
   script:
-  - echo analizing code...
+  - echo analyzing code...
   - C:\Docker\sonar-scanner-3.2\bin\sonar-scanner.bat  
   
 
