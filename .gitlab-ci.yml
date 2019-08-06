@@ -16,8 +16,8 @@ stages:
   - deploy  
   
   
-test:
-  stage: Test
+Test:
+  stage: test
   
   variables:
     ArtifactPath: 'src\Test\'
@@ -32,8 +32,8 @@ test:
   # Coverage report > dunitx-results.xml
   
   
-analyze:
-  stage: Analyze
+Analyze:
+  stage: analyze
   
   variables:
     SonarScanner: 'C:\Docker\sonar-scanner-3.2\bin\sonar-scanner.bat'
@@ -43,8 +43,8 @@ analyze:
   - C:\Docker\sonar-scanner-3.2\bin\sonar-scanner.bat  
   
 
-build:
-  stage: Build
+Build:
+  stage: build
 
   variables:
     ArtifactPath: 'src\'
@@ -62,6 +62,6 @@ build:
     expire_in: 2 week
 
 
-#deploy:
-#  stage: Deploy
+#Deploy:
+#  stage: deploy
 #  #Run deploy
