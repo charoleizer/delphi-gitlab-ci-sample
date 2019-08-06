@@ -39,7 +39,7 @@ analyze:
     SonarScanner: 'C:\Docker\sonar-scanner-3.2\bin\sonar-scanner.bat'
     
   script:
-  - echo analyzing code...
+  - echo analizing code...
   - C:\Docker\sonar-scanner-3.2\bin\sonar-scanner.bat  
   
 
@@ -62,6 +62,18 @@ build:
     expire_in: 2 week
 
 
-#deploy:
-#  stage: deploy
-#  #Run deploy
+deploy:
+  stage: deploy
+  
+  variables:
+    ArtifactName: 'DelphiCI'
+    
+  script:
+  - echo deploying project...  
+  - Compress-Archive bin\\"$env:ArtifactName".exe bin\\"$env:ArtifactName".zip
+  - $password = ConvertTo-SecureString -AsPlainText -Force -String 'AP7dyPrVGx4M2Aq9GaTc8tFqqTT'
+  - $cred = New-Object Management.Automation.PSCredential ('admin', $password)
+  - $ARTIFACT_SHA1_CHECKSUM=$(Get-FileHash -Algorithm SHA1 bin\\"$env:ArtifactName".zip).Hash
+  - $HEADERS = @{"X-Checksum-SHA1"=$ARTIFACT_SHA1_CHECKSUM;};
+  - Invoke-RestMethod -Uri http://127.0.0.1:8081/artifactory/generic-local/build/$env:CI_PROJECT_NAME/$env:CI_JOB_ID/$env:ArtifactName.zip -Method PUT -InFile config.zip -cred $cred -Headers $HEADERS
+  
