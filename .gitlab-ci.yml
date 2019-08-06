@@ -17,7 +17,7 @@ stages:
   
   
 test:
-  stage: test
+  stage: Test
   
   variables:
     ArtifactPath: 'src\Test\'
@@ -33,7 +33,7 @@ test:
   
   
 analyze:
-  stage: analyze
+  stage: Analyze
   
   variables:
     SonarScanner: 'C:\Docker\sonar-scanner-3.2\bin\sonar-scanner.bat'
@@ -44,7 +44,7 @@ analyze:
   
 
 build:
-  stage: build
+  stage: Build
 
   variables:
     ArtifactPath: 'src\'
@@ -63,5 +63,5 @@ build:
 
 
 #deploy:
-#  stage: deploy
+#  stage: Deploy
 #  #Run deploy
