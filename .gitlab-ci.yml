@@ -68,6 +68,9 @@ deploy:
   variables:
     ArtifactName: 'DelphiCI'
     
+  dependencies:
+    - build
+    
   script:
   - echo deploying project...  
   - Compress-Archive bin\\"$env:ArtifactName".exe bin\\"$env:ArtifactName".zip
@@ -75,5 +78,5 @@ deploy:
   - $cred = New-Object Management.Automation.PSCredential ('admin', $password)
   - $ARTIFACT_SHA1_CHECKSUM=$(Get-FileHash -Algorithm SHA1 bin\\"$env:ArtifactName".zip).Hash
   - $HEADERS = @{"X-Checksum-SHA1"=$ARTIFACT_SHA1_CHECKSUM;};
-  - Invoke-RestMethod -Uri http://127.0.0.1:8081/artifactory/generic-local/build/$env:CI_PROJECT_NAME/$env:CI_JOB_ID/$env:ArtifactName.zip -Method PUT -InFile config.zip -cred $cred -Headers $HEADERS
+  - Invoke-RestMethod -Uri http://127.0.0.1:8081/artifactory/generic-local/build/$env:CI_PROJECT_NAME/$env:CI_JOB_ID/$env:ArtifactName.zip -Method PUT -InFile $env:ArtifactName.zip -cred $cred -Headers $HEADERS
   
