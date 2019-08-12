@@ -63,7 +63,7 @@ Pipelines: https://gitlab.com/charoleizer/delphi-gitlab-ci-sample/pipelines
 # Curiosities
 
 #### *Why gitlab?*
-  - Because Gitlab-CE and Gitlab-CI are free self-hosted tools. Maybe [Github Actions](https://github.com/features/action) can change it.
+  - Because Gitlab-CE and Gitlab-CI are free self-hosted tools. Maybe [Github Actions](https://github.com/features/actions) can change it.
   
 #### *Why is this project in github?*
   - Because github is the most famous repository and has a larger community
