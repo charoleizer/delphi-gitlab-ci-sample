@@ -59,3 +59,14 @@ Pipelines: https://gitlab.com/charoleizer/delphi-gitlab-ci-sample/pipelines
   - Take the build stage artifact, and compress it;
   - Set JFrog Artifactory OSS variables;
   - Upload the artifact by Artifactory rest API;
+
+# Curiosities
+
+#### *Why gitlab?*
+  - Because Gitlab-CE and Gitlab-CI are free self-hosted tools
+  
+#### *Why is this project in github?*
+  - Because github is the most famous repository and has a larger community
+  
+#### *Why not create an image with Delphi?*
+  - Because of Embarcadero's license
