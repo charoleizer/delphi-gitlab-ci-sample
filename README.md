@@ -69,4 +69,4 @@ Pipelines: https://gitlab.com/charoleizer/delphi-gitlab-ci-sample/pipelines
   - Because github is the most famous repository and has a larger community
   
 #### *Why not create an image with Delphi?*
-  - Because of Embarcadero's license
+  - Because of Embarcadero's license 
