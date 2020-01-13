@@ -1,5 +1,3 @@
-
-
 [![GitlabCI](https://gitlab.com/charoleizer/delphi-gitlab-ci-sample/badges/master/pipeline.svg?style=svg)](https://gitlab.com/charoleizer/delphi-gitlab-ci-sample/pipelines)
 
 
